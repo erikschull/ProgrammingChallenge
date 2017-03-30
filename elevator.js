@@ -5,6 +5,8 @@ Class Elevator {
   var occupied;
   var destination;
   var doorsOpen;
+  var trips;
+  var available;
 
   constructor (building) {
     currentFloor = 0;
@@ -12,6 +14,8 @@ Class Elevator {
     destination = null;
     doorsOpen = false;
     occupied = false;
+    trips = 0;
+    available = true;
   };
 
   var checkDistanceToFloor = function (floor) {
@@ -26,6 +30,10 @@ Class Elevator {
     if (doorsOpen) return; // Make sure the doors are closed before changing floors
     if (currentFloor >= building.maxFloor) return; // Make sure this move is valid
     currentFloor++;
+    if (currentFloor === destination) {
+      trips++;
+      OpenDoors;
+    }
     report();
   }
 
@@ -33,6 +41,10 @@ Class Elevator {
     if (doorsOpen) return; // Make sure the doors are closed before changing floors
     if (currentFloor <= building.minFloor) return; // Make sure this move is valid
     currentFloor--;
+    if (currentFloor === destination) {
+      trips++;
+      OpenDoors;
+    }
     report();
   };
 
@@ -44,5 +56,13 @@ Class Elevator {
   var closeDoors = function () {
     doorsOpen = false;
     report();
+  };
+
+  var call = function (floor) {
+
+  };
+
+  var assignDestination = function (floor) {
+
   };
 };
