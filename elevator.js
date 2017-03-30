@@ -87,4 +87,10 @@ Class Elevator {
   var movingDown = function () {
     return currentFloor > destination[0];
   };
+
+  var pushFloorButton = function (floor) { // This is how an occupant will add a destination from inside the elevator
+    if(addDestination(floor)) {
+      occupied = true;
+    };
+  };
 };
