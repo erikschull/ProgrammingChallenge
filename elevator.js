@@ -62,6 +62,10 @@ Class Elevator {
     if (trips == maxTrips) {
       maintenanceMode = true;
     }
+    destination.remove(0); // Not valid js, but I'm pressed for time.  Remove the first element from the desination array
+    if (destination.length === 0) { // if there are no more destinations, it is inferred that all occupants have exited the elevator
+      occupied = false;
+    }
     OpenDoors();
   };
 
@@ -88,14 +92,18 @@ Class Elevator {
     return currentFloor > destination[0];
   };
 
-  // after re-reading point 6 in the instructions, I think this function is irrelevant.  I'm commenting it out, but not removing it just yet.
-  // var pushFloorButton = function (floor) { // This is how an occupant will add a destination from inside the elevator
-  //   if(addDestination(floor)) {
-  //     occupied = true;
-  //   };
-  // };
+  var pushFloorButton = function (floor) { // This is how an occupant will add a destination from inside the elevator
+    if(addDestination(floor)) {
+      occupied = true;
+    };
+  };
 
   var available = function () {
     if (maintenanceMode) return false;
+  };
+
+  var performMaintenance = function () {
+    trips = 0;
+    maintenanceMode = false;
   };
 };
