@@ -12,4 +12,8 @@ class Building {
     }
   }
 
+  var call = function (floor) {
+
+  };
+
 }
