@@ -88,9 +88,14 @@ Class Elevator {
     return currentFloor > destination[0];
   };
 
-  var pushFloorButton = function (floor) { // This is how an occupant will add a destination from inside the elevator
-    if(addDestination(floor)) {
-      occupied = true;
-    };
+  // after re-reading point 6 in the instructions, I think this function is irrelevant.  I'm commenting it out, but not removing it just yet.
+  // var pushFloorButton = function (floor) { // This is how an occupant will add a destination from inside the elevator
+  //   if(addDestination(floor)) {
+  //     occupied = true;
+  //   };
+  // };
+
+  var available = function () {
+    if (maintenanceMode) return false;
   };
 };
